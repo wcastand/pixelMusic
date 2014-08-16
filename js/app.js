@@ -4,9 +4,6 @@ var canvas;
 var setup = false;
 
 document.addEventListener('DOMContentLoaded', function(){
-	var c = document.createElement('canvas');
-	document.body.appendChild(c);
-	c.id = "world";
 	canvas = new Canvas('#world');
 	canvas.setup();
 	player = new Audio();
@@ -77,6 +74,7 @@ function render(){
 	if(!setup)
 		return;
 	canvas.gtx.save();
+	canvas.gtx.setTransform(1, 0, 0, 1, 0, 0);
 	canvas.gtx.clearRect(0, 0, canvas.width, canvas.height);
 	canvas.gtx.restore();
 

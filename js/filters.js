@@ -10,6 +10,7 @@ Canvas.prototype = {
 		this.width = this.canvas.width = window.innerWidth;
 		this.height = this.canvas.height = window.innerHeight;
 		this.gtx = this.canvas.getContext("2d");
+		this.gtx.setTransform(1, 0, 0, 1, window.innerWidth/2, window.innerHeight/2);
 	},
 	changeImgData : function (data){
 		this.gtx.putImageData(data, 0, 0);
@@ -32,7 +33,7 @@ Canvas.prototype = {
 
 		//console.log(img, ow, oh,this.width, this.height, posx, posy);
 		this.gtx.clearRect(0, 0, this.width, this.height);
-		this.gtx.drawImage(img, posx, posy, img.width, img.height, 0, 0, ow, oh);
+		this.gtx.drawImage(img, posx, posy, img.width, img.height, - canvas.width / 2, - canvas.height / 2, ow, oh);
 	},
 	grayscale : function(image, ratio) {
 		var pixels = this.getPixels(image);
